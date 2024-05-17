@@ -1,0 +1,8 @@
+login oauth2
+register normal
+login normal
+pic display
+register pic replace with logo
+verification Rohit Chauhan
+forgot password implement
+webrtc add
