@@ -15,18 +15,17 @@ import 'registration_page.dart';
 import 'widgets/header_widget.dart';
 
 class LoginPage extends StatefulWidget{
-  LoginPage({Key? key, this.user}): super(key:key);
-  User ?user;
+  const LoginPage({Key? key}): super(key:key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage>{
-
   double _headerHeight = 250;
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  User ? _user;
 
 
   @override
@@ -36,9 +35,8 @@ class _LoginPageState extends State<LoginPage>{
 
 
     _auth.authStateChanges().listen((event) {
-      User ? _user = widget.user;
-      setState(() {
 
+      setState(() {
         _user=event;
       });
       if (_user!=null)
