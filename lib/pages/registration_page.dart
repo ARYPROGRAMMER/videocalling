@@ -385,12 +385,12 @@ final  database = FirebaseDatabase.instance.ref();
                             ),
                             onPressed: () async{
                               if (_formKey.currentState!.validate()) {
-                                String path = "/${_emailvalue}".toString();
-                                final detail = database.child(path);
+                                final detail = database.child("/all");
                                 await detail.set(
                                     {
                                       "first_name":"$_firstvalue",
                                       "last_name":"$_lastvalue",
+                                      "email":"$_emailvalue",
                                       "phone_number":"$_phonealue",
                                       "password":"$_passvalue"
                                     }

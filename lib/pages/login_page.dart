@@ -15,17 +15,18 @@ import 'registration_page.dart';
 import 'widgets/header_widget.dart';
 
 class LoginPage extends StatefulWidget{
-  const LoginPage({Key? key}): super(key:key);
+  LoginPage({Key? key, this.user}): super(key:key);
+  User ?user;
 
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage>{
+
   double _headerHeight = 250;
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  User ? _user;
 
 
   @override
@@ -35,10 +36,15 @@ class _LoginPageState extends State<LoginPage>{
 
 
     _auth.authStateChanges().listen((event) {
-
+      User ? _user = widget.user;
       setState(() {
+
         _user=event;
       });
+      if (_user!=null)
+      {
+        Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>ProfilePage()));
+      }
 
     });
   }
@@ -245,6 +251,7 @@ class _LoginPageState extends State<LoginPage>{
                             SizedBox(height: 15.0),
 
 
+
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -255,10 +262,7 @@ class _LoginPageState extends State<LoginPage>{
                                   onTap: () async{
                                     setState(() {
                                       _handlesignin();
-                                      if (_user!=null)
-                                        {
-                                          Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>ProfilePage()));
-                                        }
+
                                     });
                                   },
                                 ),

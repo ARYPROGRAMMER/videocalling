@@ -2,11 +2,14 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:videocall/pages/login_page.dart';
+import 'package:videocall/pages/splash_screen.dart';
 import 'package:videocall/pages/widgets/header_widget.dart';
 
 import 'forgot_password_page.dart';
@@ -25,6 +28,10 @@ class _ProfilePageState extends State<ProfilePage>{
 
   double  _drawerIconSize = 24;
   double _drawerFontSize = 17;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -103,15 +110,15 @@ class _ProfilePageState extends State<ProfilePage>{
                   ),
                 ),
               ),
-              // ListTile(
-              //   leading: Icon(Icons.screen_lock_landscape_rounded, size: _drawerIconSize, color:Colors.black),
-              //   title: Text('Splash Screen', style: TextStyle(fontSize: 17, color: Colors.black),),
-              //   onTap: (){
-              //     Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen(title: "Splash Screen")));
-              //   },
-              // ),
-              //
-              // Divider(color: Colors.black,height: 2,),
+              ListTile(
+                leading: Icon(Icons.screen_lock_landscape_rounded, size: _drawerIconSize, color:Colors.black),
+                title: Text('Restart', style: TextStyle(fontSize: 17, color: Colors.black),),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen(title: "Splash Screen")));
+                },
+              ),
+
+              Divider(color: Colors.black,height: 2,),
 
               ListTile(
                 leading: Icon(Icons.login_rounded,size: _drawerIconSize,color: Colors.black),
@@ -152,9 +159,9 @@ class _ProfilePageState extends State<ProfilePage>{
               Divider(color: Colors.black, height: 2,),
               ListTile(
                 leading: Icon(Icons.logout_rounded, size: _drawerIconSize,color:Colors.black,),
-                title: Text('Exit',style: TextStyle(fontSize: _drawerFontSize,color: Colors.black),),
-                onTap: () {
-                 exit(0);
+                title: Text('Sign Out',style: TextStyle(fontSize: _drawerFontSize,color: Colors.black),),
+                onTap: () async{
+                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginPage()));
                 },
               ),
             ],
