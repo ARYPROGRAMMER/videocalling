@@ -1,6 +1,6 @@
-# ![ResoluteAI Logo](assets/images/mainlogo.png) VideoCall App
+# ![ResoluteAI Logo](assets/images/mainlogo.png) 
 
-Welcome to the VideoCall App by **ResoluteAI**! This application is designed to provide seamless and high-quality video calling experiences for individuals and businesses.
+Welcome to the VideoCall App made for **ResoluteAI**! This application is designed to provide seamless and high-quality video calling experiences for individuals and businesses.
 
 ## Features
 
